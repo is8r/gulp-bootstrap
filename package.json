@@ -24,6 +24,6 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git://github.com/is8r/xxx.git"
+    "url": "git@github.com:is8r/gulp-bootstrap.git"
   }
 }

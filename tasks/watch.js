@@ -9,10 +9,10 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var plumber = require("gulp-plumber");
 var sourcemaps = require('gulp-sourcemaps');
-var minifycss = require('gulp-minify-css');
+var cleanCSS = require('gulp-clean-css');
 var postcss = require('gulp-postcss');
 var filter = require("gulp-filter");
-var notify = require('gulp-notify');
+var $ = require('gulp-load-plugins')({lazy: true});
 
 var paths = {
   dist: './public',
@@ -55,12 +55,12 @@ gulp.task('styles', function() {
   ];
 
   gulp.src(paths.styles)
-    .pipe(plumber())
-    .pipe(sass())
+    .pipe($.plumber())
+    .pipe($.sass())
     .on('error', function(err) {
       console.log(err.message);
     })
-    .pipe(minifycss())
+    .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(filter("**/*.css"))
     .pipe(postcss(processors))
     .pipe(gulp.dest('./public/stylesheets'))

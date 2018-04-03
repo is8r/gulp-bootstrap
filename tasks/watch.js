@@ -45,7 +45,7 @@ gulp.task('scripts', function() {
     .pipe(concat('scripts.min.js'))
     .pipe(uglify())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./public/javascripts'))
+    .pipe(gulp.dest(paths.dist + '/javascripts'))
     .pipe(reload({stream:true}));
 });
 
@@ -63,7 +63,7 @@ gulp.task('styles', function() {
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(filter("**/*.css"))
     .pipe(postcss(processors))
-    .pipe(gulp.dest('./public/stylesheets'))
+    .pipe(gulp.dest(paths.dist + '/stylesheets'))
     .pipe(reload({stream:true}));
 });
 

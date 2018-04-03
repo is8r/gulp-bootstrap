@@ -17,7 +17,10 @@ var $ = require('gulp-load-plugins')({lazy: true});
 var paths = {
   dist: './public',
   scripts: [
-    'assets/javascripts/**/*.js'
+    'assets/javascripts/vendor/jquery-3.2.1.min.js',
+    'assets/javascripts/vendor/bootstrap.min.js',
+    'assets/javascripts/vendor/popper.min.js',
+    'assets/javascripts/app/**/*.js'
     ],
   styles: [
     'assets/stylesheets/**/*.scss',
@@ -45,7 +48,7 @@ gulp.task('scripts', function() {
     .pipe(concat('scripts.min.js'))
     .pipe(uglify())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./public/javascripts'))
+    .pipe(gulp.dest(paths.dist + '/javascripts'))
     .pipe(reload({stream:true}));
 });
 
@@ -63,7 +66,7 @@ gulp.task('styles', function() {
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(filter("**/*.css"))
     .pipe(postcss(processors))
-    .pipe(gulp.dest('./public/stylesheets'))
+    .pipe(gulp.dest(paths.dist + '/stylesheets'))
     .pipe(reload({stream:true}));
 });
 

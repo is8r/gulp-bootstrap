@@ -17,7 +17,10 @@ var $ = require('gulp-load-plugins')({lazy: true});
 var paths = {
   dist: './public',
   scripts: [
-    'assets/javascripts/**/*.js'
+    'assets/javascripts/vendor/jquery-3.2.1.min.js',
+    'assets/javascripts/vendor/bootstrap.min.js',
+    'assets/javascripts/vendor/popper.min.js',
+    'assets/javascripts/app/**/*.js'
     ],
   styles: [
     'assets/stylesheets/**/*.scss',
